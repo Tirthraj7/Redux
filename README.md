@@ -68,3 +68,58 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+### REDUX ###
+
+1. React Redux Actions
+
+    > Change current state in app
+    > Packet of information which is passed to store
+    > Actions are plain JS objects
+    
+    > Ex: Add user on form submit
+        
+            Payload is the information or data for action
+        const action = {
+            'type':'ADD_USER',
+            'payload': {
+                'name':'Ap',
+                'email':'live.Apdhillon@gmail.com'
+                }
+        }
+            store.dispatch()
+
+2. React Redux Reducer
+
+    > Pure functions
+    > Depends only on it arguments, does not change any of its arguments, does not depend on ayy variable
+    > Reducers are called automatically when an actions are dispatched
+    > Reducers are responsible for particular state in store It return new form of state
+
+        const cartReducer=(state=[],action)=>{
+
+            switch(action.type){
+                case'ADD_TO_CART':return[...state,action.payload];
+
+                default: return state;
+            }
+        }
+        export cartReducer; 
+
+    > Reducers should split into multiple small reducers to manage a small set of data in store
+
+        const store={
+            users: userReducer
+            products: productReducer
+            cart: cartReducer
+            favourites: favouritesReducer
+        }
+
+3. Connect component with redux
+
+    > useSelector hook can be used to select a part from state to use in component
+    
